@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Hex Color Generator</title>
+    <style>
+        #color-display {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button id="generate-color-button">Generate Random Hex Color</button>
+    <div id="color-display"></div>
+
+    <script>
+        const generateRandomHexColor = () => {
+            const letters = "0123456789ABCDEF";
+            const length = Math.floor(Math.random() * 5) + 2; // Random number between 2 and 6
+            let color = "#";
+            for (let i = 0; i < length; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        };
+
+        const displayColor = () => {
+            const color = generateRandomHexColor();
+            const colorDisplay = document.getElementById('color-display');
+            colorDisplay.style.backgroundColor = color;
+            colorDisplay.innerText = color;
+        };
+
+        const generateColorButton = document.getElementById('generate-color-button');
+        generateColorButton.addEventListener('click', displayColor);
+    </script>
+</body>
+</html>
